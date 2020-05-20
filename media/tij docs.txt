@@ -1,0 +1,20 @@
+1st class:
+	Introduction and flow control statement
+	environment setup
+2nd class:
+	array, java class and operator
+3rd class:
+	OOPS concept
+	packages
+4th class:
+	modifiers and interface
+5th class:
+	garbage collection and string manipulationn
+6th class:
+	Exception handling and file creation
+7th class:
+	generics and practical session
+8th class:
+	revision and test
+
+	

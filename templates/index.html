@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%} ">
+        <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+        <script>
+            $(function(){
+                  $('#incident_date').datepicker({
+                      'format':'yyyy-mm-dd',
+                      'autoclose': true
+                  })
+      
+            });
+        </script>
+  </head>
+
+  <body >
+    
+      <div class="container">
+        <img src="{% static 'rma-logo-white.png' %}" class="rounded" alt="Cinque Terre" style="display: block;margin-left: auto;margin-right: auto;width: 20%;">
+      </div>
+      <div class="container" style="text-align:center;">
+            <h3>RMA Whistle Blower Portal</h3>
+      </div>
+    
+    <div class="container p-3 my-3 bg-primary text-white">
+       <p> Your report should include details like date and place of incident, description of incident/details of concerns, person(s) 
+           involved and if possible explain how you think the matter may be best resolved. The report will be submitted anonymously, however,
+            you are encouraged to share your identity including your name and contact details which will be kept completely confidential.
+        You may also attach a document of evidence if any.</p>
+    </div>
+    <div class="container" style="margin-bottom: 20px;">
+        
+                    <form action="/submit/" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Reporter's Information</h5>
+                                    <div class="row">
+                                        
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <!-- <label for="Eid">Employee ID:</label> -->
+                                                    <input type="number" class="form-control"   id="Eid" name="Eid" required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <!-- <label for="email">Email address:</label> -->
+                                                    <input type="email" class="form-control" placeholder="Enter email address" id="email" name="email">
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <!-- <div class="row">
+                                        
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email">Email address:</label>
+                                                <input type="email" class="form-control" placeholder="Enter email" id="email">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email">Email address:</label>
+                                                <input type="email" class="form-control" placeholder="Enter email" id="email">
+                                            </div>
+                                        </div>
+                                </div> -->
+                            </div>
+                         </div>           
+                        
+                         <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Key Suspected to be investigated</h5>
+                                    <div class="row">
+                                        
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <!-- <label for="Eid">Employee ID:</label> -->
+                                                    <input type="text" class="form-control" placeholder="Enter suspects name" id="sname" name="sname"required>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <!-- <label for="email">Email address:</label> -->
+                                                    <input type="text" class="form-control" placeholder="Enter suspects job position" id="sjob" name="sjob" required>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <!-- <label for="Eid">Employee ID:</label> -->
+                                                <input type="number" class="form-control" placeholder="Enter suspects Phone number" id="sphone" name="sphone" required>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <!-- <label for="email">Email address:</label> -->
+                                                <input type="text" class="form-control" placeholder="Enter suspects address" id="saddress" name="saddress" required>
+                                            </div>
+                                        </div>
+                                     </div>
+                                    <!-- <div class="row">
+                                        
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email">Email address:</label>
+                                                <input type="email" class="form-control" placeholder="Enter email" id="email">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="email">Email address:</label>
+                                                <input type="email" class="form-control" placeholder="Enter email" id="email">
+                                            </div>
+                                        </div>
+                                </div> -->
+                            </div>
+                         </div>
+                         <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Suspicious Activity Report: </h5>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="comment">Briefly describe the improper activity and how you know about it. If there is more than one allegation, 
+                                                number each allegation, use as many words as necessary.
+                                                What wrongdoing occurred?:*</label>
+                                            <textarea class="form-control" rows="5" id="whatwrong" name="whatwrong" placeholder="type here..........." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="comment">Who did the wrongdoing?:*</label>
+                                            <textarea class="form-control" rows="5" id="whowrong" name="whowrong" placeholder="type here..........." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="comment">Where did this happen (Unit, location)?:*</label>
+                                            <textarea class="form-control" rows="5" id="wherewrong" name="wherewrong" placeholder="type here..........." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="comment">What/who enabled this to happen (How)?:*</label>
+                                            <textarea class="form-control" rows="5" id="whoenabled" name="whoenabled" placeholder="type here..........." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="comment">Explain how you think the matter may be best resolved?*</label>
+                                            <textarea class="form-control" rows="5" id="solution" name="solution" placeholder="type here..........." required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+
+                         <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Date of Incident </h5>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" autocomplete="off" id="incident_date" name= "incident_date" class="form-control" placeholder="yyyy-mm-dd" required readonly>
+                                        </div>
+                                    </div>
+                            </div>
+                         </div>
+                         <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-body">
+                                <h5 class="card-title">Attach a document of evidence if any. </h5>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="file"name="a_file" class="form-control-file border">
+                                        </div>
+                                    </div>
+                            </div>
+                         </div>
+                         <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" required> I agree that the information provided are all true upto my knowledge.
+                            </label>
+                            </div>
+                         <button type="submit" class="btn btn-primary">Submit</button> 
+                        <!-- <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+                        </div>
+                        <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Remember me
+                        </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button> -->
+                    </form>
+        </div>
+        
+        {% if messages %}
+        {% for message in messages %}
+        
+        <div class="container p-3 my-3 bg-success text-white">
+            <p>{{message}}</p>
+        </div>
+        {% endfor %}    
+        {%endif%}
+        
+    
+  </body>
+ 
+</html>
